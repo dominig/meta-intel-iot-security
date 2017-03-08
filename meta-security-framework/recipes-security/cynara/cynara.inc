@@ -134,7 +134,7 @@ pkg_postinst_${PN} () {
 
    # Strip git patch level information, the version comparison code
    # in cynara-db-migration only expect major.minor.patch version numbers.
-   VERSION=${@bb.data.getVar('PV',d,1).split('+git')[0]}
+   VERSION=${@d.getVar('PV',True).split('+git')[0]}
    if [ -d $D${localstatedir}/cynara ] ; then
       # upgrade
       echo "NOTE: updating cynara DB to version $VERSION"
